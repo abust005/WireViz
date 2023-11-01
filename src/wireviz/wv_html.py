@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from typing import List, Union
+import imgkit
 import re
 
 from wireviz import __version__, APP_NAME, APP_URL, wv_colors
@@ -52,3 +53,7 @@ def generate_html_output(filename: Union[str, Path], bom_list: List[List[str]], 
             file.write(f'<h2>Notes</h2>\n<p>{notes}</p>\n')
 
         file.write('</body></html>\n')
+
+    
+    imgkit.from_file(f'{filename}.html', f'{filename}.jpg', {"--enable-local-file-access":""})
+
